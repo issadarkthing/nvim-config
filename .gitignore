@@ -1,0 +1,6 @@
+undodir/
+autoload/
+viminfo.tmp.a
+viminfo
+
+.netrwhist
