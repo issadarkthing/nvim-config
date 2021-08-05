@@ -41,3 +41,4 @@ vim.o.spelllang = 'en_gb'
 vim.o.relativenumber = true
 vim.o.hlsearch = true
 vim.o.incsearch = true
+vim.o.termguicolors = true
