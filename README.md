@@ -1,2 +1,3 @@
 # nvim-config
-Personal neovim config
+
+My personal neovim config which has been rewritten mostly in lua.
