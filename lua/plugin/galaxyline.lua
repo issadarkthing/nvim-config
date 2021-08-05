@@ -43,6 +43,7 @@ gls.left[1] = {
     highlight = {colors.blue,colors.bg}
   },
 }
+
 gls.left[2] = {
   ViMode = {
     provider = function()
@@ -61,6 +62,7 @@ gls.left[2] = {
     highlight = {colors.red,colors.bg,'bold'},
   },
 }
+
 gls.left[3] = {
   FileSize = {
     provider = 'FileSize',
@@ -68,6 +70,7 @@ gls.left[3] = {
     highlight = {colors.fg,colors.bg}
   }
 }
+
 gls.left[4] ={
   FileIcon = {
     provider = 'FileIcon',
@@ -239,26 +242,70 @@ gls.right[9] = {
   },
 }
 
+-- inactive window
+
 gls.short_line_left[1] = {
-  BufferType = {
-    provider = 'FileTypeName',
-    separator = ' ',
-    separator_highlight = {'NONE',colors.bg},
-    highlight = {colors.blue,colors.bg,'bold'}
-  }
+  RainbowRed = {
+    provider = function() return '▊ ' end,
+    highlight = {colors.blue,colors.bg}
+  },
 }
 
 gls.short_line_left[2] = {
+  FileSize = {
+    provider = 'FileSize',
+    condition = condition.buffer_not_empty,
+    highlight = {colors.fg,colors.bg}
+  }
+}
+
+gls.short_line_left[3] = {
+  FileIcon = {
+    provider = 'FileIcon',
+    condition = condition.buffer_not_empty,
+    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
+  },
+}
+
+gls.short_line_left[4] = {
   SFileName = {
     provider =  'SFileName',
     condition = condition.buffer_not_empty,
-    highlight = {colors.fg,colors.bg,'bold'}
+    highlight = {colors.blue, colors.bg}
   }
 }
 
 gls.short_line_right[1] = {
-  BufferIcon = {
-    provider= 'BufferIcon',
-    highlight = {colors.fg,colors.bg}
+  FileEncode = {
+    provider = 'FileEncode',
+    highlight = {colors.green,colors.bg,'bold'}
+  }
+}
+
+gls.short_line_right[2] = {
+  FileFormat = {
+    provider = 'FileFormat',
+    condition = condition.hide_in_width,
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.green,colors.bg,'bold'}
+  }
+}
+
+gls.short_line_right[3] = {
+  GitIcon = {
+    provider = function() return '  ' end,
+    condition = condition.check_git_workspace,
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.violet,colors.bg,'bold'},
+  }
+}
+
+gls.short_line_right[4] = {
+  GitBranch = {
+    provider = 'GitBranch',
+    condition = condition.check_git_workspace,
+    highlight = {colors.violet,colors.bg,'bold'},
   }
 }

@@ -107,7 +107,7 @@ mapper(
 mapper(
   "n",
   "<leader>ec",
-  ":e ~/.config/nvim/init.vim<cr>",
+  ":e ~/.config/nvim/init.lua<cr>",
   "Config",
   "edit_config_file",
   "Edit init.vim")
@@ -115,7 +115,7 @@ mapper(
 mapper(
   "n",
   "<leader>v",
-  ":source ~/.config/nvim/init.vim<cr>",
+  ":source ~/.config/nvim/init.lua<cr>",
   "Config",
   "source_config_file",
   "Source init.vim")
@@ -228,7 +228,7 @@ mapper(
 mapper(
   "n",
   "<leader>ww",
-  ":vimwikiindex<cr>",
+  ":VimwikiIndex<cr>",
   "vimwiki",
   "vimwiki_index",
   "Open vimwiki index file")

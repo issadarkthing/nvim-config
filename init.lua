@@ -7,6 +7,7 @@ require('plugin/telescope')
 require('mappings')
 require('commands')
 require('options')
+require('utils')
 
 vim.cmd[[filetype plugin indent on]]
 vim.cmd[[colorscheme rex]]
@@ -28,6 +29,6 @@ vim.cmd[[
 
 
   " fix coc error message issue
-  highlight Error ctermbg=black
+  highlight Error guibg=black
   highlight Sneak ctermfg=0 ctermbg=6
 ]]
