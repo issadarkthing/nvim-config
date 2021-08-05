@@ -1,6 +1,9 @@
 local actions = require('telescope.actions')
 
-require('telescope').setup{
+require'nvim-mapper'.setup{}
+local telescope = require('telescope')
+
+telescope.setup{
   defaults = {
     mappings = {
       i = {
@@ -13,10 +16,11 @@ require('telescope').setup{
     prompt_prefix = ">> ",
     selection_caret = ">> ",
     set_env = { ['COLORTERM'] = 'truecolor' },
-  }
+  },
 }
 
-require'telescope'.load_extension('fzy_native')
+telescope.load_extension('fzy_native')
+telescope.load_extension('mapper')
 
 local cmd = vim.cmd
 
