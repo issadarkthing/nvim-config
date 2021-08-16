@@ -45,7 +45,18 @@ return require('packer').startup(function ()
  use { 
    'neoclide/coc.nvim', 
    branch = 'master', 
-   run = 'yarn install --frozen-lockfile'
+   run = 'yarn install --frozen-lockfile',
+   opt = true, 
+   config = function() require'plugin/coc'.setup() end,
+   ft = {
+     --[[ 'typescriptreact', 
+     'typescript',
+     'javascript', ]]
+     'lua',
+     'python',
+     'ruby',
+     'rust'
+   },
  }
 
 
@@ -63,7 +74,7 @@ return require('packer').startup(function ()
  use 'djoshea/vim-autoread'
 
 -- go plugin
- use { 'fatih/vim-go', opt = true, ft = 'go' }
+ -- use { 'fatih/vim-go', opt = true, ft = 'go' }
 
 -- help to manage alignment
  use 'junegunn/vim-easy-align'
@@ -112,11 +123,15 @@ return require('packer').startup(function ()
  use { 'leafgarland/typescript-vim', opt = true, ft = 'typescript' }
 
 -- comments in json file
- use { 'neoclide/jsonc.vim', opt = true, ft = 'tsconfig.json' }
+ use { 'neoclide/jsonc.vim', opt = true, ft = 'jsonc' }
 
  use 'skywind3000/asyncrun.vim'
 
- use { 'prettier/vim-prettier', opt = true, ft = {'typescript', 'typescriptreact'} }
+ use { 
+   'prettier/vim-prettier', 
+   opt = true, ft = {'typescript', 'typescriptreact'},
+   run = {'yarn install'}
+ }
 
 -- run lazygit in neovim
  use { 
@@ -158,7 +173,17 @@ return require('packer').startup(function ()
  -- coc nvim auto completion
  use { 
    'rafcamlet/coc-nvim-lua', 
-   requires = {{'neoclide/coc.nvim'}, branch = "release"} 
+   requires = {{'neoclide/coc.nvim'}, branch = "release"},
+   opt = true, 
+   ft = {
+     'typescriptreact', 
+     'typescript',
+     'javascript',
+     'lua',
+     'python',
+     'ruby',
+     'rust'
+   },
  }
 
  use {
@@ -168,6 +193,20 @@ return require('packer').startup(function ()
      config = function() require'plugin/galaxyline' end,
      -- some optional icons
      requires = {'kyazdani42/nvim-web-devicons', opt = true}
+ }
+
+ use 'bfredl/nvim-luadev' 
+
+ use { 
+   'ms-jpq/coq_nvim',
+   branch = 'coq',
+   ft = {"go", "typescript", "typescriptreact"},
+   config = function() require'plugin/coq_nvim'.setup() end
+ }
+
+ use { 
+   'neovim/nvim-lspconfig',
+   config = function() require'plugin/nvim-lsp'.setup() end
  }
   
 end)

@@ -1,1 +1,1 @@
-vim.g['pandoc#modules#disabled'] = ["folding"]
+vim.g['pandoc#modules#disabled'] = { "folding" }

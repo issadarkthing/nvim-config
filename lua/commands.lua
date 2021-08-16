@@ -67,8 +67,8 @@ cmd [[
     " auto format characters to textwidth limit
     " autocmd FileType tex setlocal formatoptions+=t
 
-      " use spaces instead of tab for haskell
-      autocmd FileType haskell call ReplaceTabWithSpace()
+    " use spaces instead of tab for haskell
+    autocmd FileType haskell call ReplaceTabWithSpace()
 
     autocmd FileType tex call GrammarMappings()
     autocmd BufNewFile,BufRead *.wiki call GrammarMappings()
@@ -82,5 +82,8 @@ cmd [[
     " restore previos cursor position
     autocmd BufReadPost * if line("'\"") | execute("normal `\"") | endif
 
+    " start COQ on enter
+    autocmd VimEnter *.go silent COQnow
+    autocmd VimEnter *.ts silent COQnow
   augroup END
 ]]

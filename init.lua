@@ -4,6 +4,7 @@ vim.g.mapleader = ","
 
 require('plugins')
 require('plugin/telescope')
+require('plugin/coc')
 require('mappings')
 require('commands')
 require('options')

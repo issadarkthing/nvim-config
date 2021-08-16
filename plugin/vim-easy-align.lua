@@ -13,5 +13,5 @@ map.mapper(
   "ga",
   "<Plug>(EasyAlign)",
   "EasyAlign",
-  "easy_align_interactive",
+  "easy_align_text_object",
   "Start interactive EasyAlign for a motion/text object (e.g. gaip)")

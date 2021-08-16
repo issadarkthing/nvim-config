@@ -1,5 +1,9 @@
 local map = require('mappings')
 
+
+vim.bo.tabstop = 4
+vim.bo.shiftwidth = 4
+
 map.mapper(
   "n",
   "<leader>a",

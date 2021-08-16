@@ -33,10 +33,15 @@ map('i', '<s-tab>', 'pumvisible() ? "<C-p>" : "<s-tab>"', {expr = true})
 map('n', 'k', '(v:count > 1 ? "m\'" . v:count : \'\') . \'gk\'', {expr = true})
 map('n', 'j', '(v:count > 1 ? "m\'" . v:count : \'\') . \'gj\'', {expr = true})
 
--- remap escape key to exit fzf
+-- remap escape key to exit lazygit
 if vim.o.filetype == "fzf" or vim.o.filetype == "lazygit" then
-  map('t', '<esc>', '<c-\\><c-n>', {buffer = true})
+  map('t', '<esc>', 'q', {buffer = true})
 end
+
+-- use esc to escape terminal insert mode
+-- map('t', '<esc>', '<c-\\><c-n>')
+map('t', '<c-r>', [['<C-\><C-N>"'.nr2char(getchar()).'pi']], {expr = true})
+
 
 mapper(
   'n', 
@@ -257,6 +262,30 @@ mapper(
   "Buffer",
   "open_scratch_buffer",
   "Open scratch buffer")
+
+mapper(
+  "n",
+  "<backspace>",
+  "<c-w>w",
+  "Window",
+  "alternate_window",
+  "Alternate between window")
+
+mapper(
+  "n",
+  "<c-e>",
+  "$",
+  "Line Movement",
+  "goto_end_of_line",
+  "Go to end of line")
+
+mapper(
+  "n",
+  "<space>r",
+  "<cmd>lua require'plugin/luadev'.exec_current_line()<cr>",
+  "Lua Execute",
+  "execute_current_line",
+  "Execute the current line (lua)")
 
 
 

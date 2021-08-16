@@ -42,3 +42,7 @@ vim.o.relativenumber = true
 vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.o.termguicolors = true
+
+vim.o.guifont = 'MesloLGS NF:h16.5'
+vim.g.neovide_transparency = 0.8
+
