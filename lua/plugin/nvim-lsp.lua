@@ -32,7 +32,7 @@ function M.setup()
 
   mapper.mapper(
   "n",
-  "<leader>ca",
+  "<leader><leader>",
   "<cmd>lua vim.lsp.buf.code_action()<cr>",
   "LSP",
   "lsp_code_action",

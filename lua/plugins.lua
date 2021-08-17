@@ -41,25 +41,6 @@ return require('packer').startup(function ()
 -- grammar check
  use 'rhysd/vim-grammarous'
 
--- code completion
- use { 
-   'neoclide/coc.nvim', 
-   branch = 'master', 
-   run = 'yarn install --frozen-lockfile',
-   opt = true, 
-   config = function() require'plugin/coc'.setup() end,
-   ft = {
-     --[[ 'typescriptreact', 
-     'typescript',
-     'javascript', ]]
-     'lua',
-     'python',
-     'ruby',
-     'rust'
-   },
- }
-
-
 -- vim latex
  use { 'lervag/vimtex', opt = true, ft = 'latex' }
 
@@ -165,27 +146,13 @@ return require('packer').startup(function ()
  use { 
    'nvim-telescope/telescope.nvim', 
    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+   config = function() require'plugin/telescope'.setup() end
  }
 
  -- fuzzy searching written in c
  use 'nvim-telescope/telescope-fzy-native.nvim'
 
- -- coc nvim auto completion
- use { 
-   'rafcamlet/coc-nvim-lua', 
-   requires = {{'neoclide/coc.nvim'}, branch = "release"},
-   opt = true, 
-   ft = {
-     'typescriptreact', 
-     'typescript',
-     'javascript',
-     'lua',
-     'python',
-     'ruby',
-     'rust'
-   },
- }
-
+ -- fast status line written in lua
  use {
    'glepnir/galaxyline.nvim',
      branch = 'main',
@@ -195,8 +162,7 @@ return require('packer').startup(function ()
      requires = {'kyazdani42/nvim-web-devicons', opt = true}
  }
 
- use 'bfredl/nvim-luadev' 
-
+ -- fast as fuck auto completion
  use { 
    'ms-jpq/coq_nvim',
    branch = 'coq',
@@ -204,9 +170,16 @@ return require('packer').startup(function ()
    config = function() require'plugin/coq_nvim'.setup() end
  }
 
+ -- native LSP
  use { 
    'neovim/nvim-lspconfig',
    config = function() require'plugin/nvim-lsp'.setup() end
+ }
+
+ -- better ui for LSP
+ use {
+   'glepnir/lspsaga.nvim',
+   config = function() require'plugin/lspsaga'.setup() end
  }
   
 end)

@@ -9,7 +9,7 @@ vim.cmd[[let @e='O// eslint-disable-next-linejk']]
 vim.b.tabstop = 2
 vim.b.shiftwidth = 2
 vim.b.expandtab = true
-
+--[[
 map.mapper(
   "n",
   "\\ll",
@@ -32,4 +32,4 @@ map.mapper(
   ":CocRestart<cr>",
   "Coc Typescript",
   "coc_restart",
-  "Restart Coc")
+  "Restart Coc") ]]
