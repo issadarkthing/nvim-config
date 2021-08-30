@@ -1,9 +1,12 @@
 
 
+local ok, cmp = pcall(function() require'cmp' end)
 
-require'cmp'.setup{
-  sources = { 
-    { name = 'buffer' },
-    { name = 'look' },
-  },
-}
+if ok then
+  cmp.setup.buffer{
+    sources = {
+      { name = 'buffer' },
+      { name = 'look' },
+    }
+  }
+end
