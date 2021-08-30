@@ -23,3 +23,10 @@ vim.cmd[[
 
 --makes formatted block prettier
 vim.b.vimwiki_conceal_pre = 1
+
+require'cmp'.setup{
+  sources = {
+    { name = 'look' },
+    { name = 'buffer' },
+  }
+}
