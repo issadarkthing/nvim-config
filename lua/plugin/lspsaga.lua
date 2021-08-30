@@ -5,7 +5,13 @@ function M.setup()
   local saga = require('lspsaga')
   local mapper = require('mappings')
 
-  saga.init_lsp_saga()
+  saga.init_lsp_saga {
+    error_sign = '',
+    warn_sign = '',
+    hint_sign = '',
+    infor_sign = '',
+    code_action_icon = ' ',
+  }
 
   mapper.mapper(
   "n",
