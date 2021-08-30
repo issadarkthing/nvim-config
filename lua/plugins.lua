@@ -82,7 +82,7 @@ return require('packer').startup(function ()
 -- cool markdown preview
  use { 
    'iamcco/markdown-preview.nvim', 
-   opt = true, cmd = {"MarkdownPreview"},
+   ft = {"markdown"},
    run = 'cd app && yarn install'  
  }
 
@@ -166,7 +166,8 @@ return require('packer').startup(function ()
  use { 
    'ms-jpq/coq_nvim',
    branch = 'coq',
-   ft = {"go", "typescript", "typescriptreact"},
+   opt = true,
+   ft = {"go", "typescript", "typescriptreact", "javascript"},
    config = function() require'plugin/coq_nvim'.setup() end
  }
 
@@ -177,9 +178,22 @@ return require('packer').startup(function ()
  }
 
  -- better ui for LSP
- use {
+ --[[ use {
    'glepnir/lspsaga.nvim',
    config = function() require'plugin/lspsaga'.setup() end
- }
+ } ]]
   
+  -- toml syntax highlight
+  use 'cespare/vim-toml'
+
+  --[[ use {
+    'hrsh7th/nvim-cmp',
+    requires = {'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lua'},
+    config = function() require'plugin/nvim-cmp'.setup() end
+  }
+
+  use 'hrsh7th/cmp-nvim-lsp'
+
+  use 'octaltree/cmp-look' ]]
+
 end)
