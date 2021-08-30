@@ -82,8 +82,5 @@ cmd [[
     " restore previos cursor position
     autocmd BufReadPost * if line("'\"") | execute("normal `\"") | endif
 
-    " start COQ on enter
-    autocmd VimEnter *.go silent COQnow
-    autocmd VimEnter *.ts silent COQnow
   augroup END
 ]]
