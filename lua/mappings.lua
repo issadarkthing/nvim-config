@@ -25,9 +25,6 @@ map('n', 'q:', ':q<cr>')
 -- automatic center when jump to next or previous position
 map('n', '<c-o>', '<c-o>zz')
 map('n', '<c-i>', '<c-i>zz')
--- use tab for trigger completion with characters ahead and navigate.
-map('i', '<tab>', 'pumvisible() ? "<C-n>" : "<tab>"', {expr = true})
-map('i', '<s-tab>', 'pumvisible() ? "<C-p>" : "<s-tab>"', {expr = true})
 
 -- add relative line jump to jump list
 map('n', 'k', '(v:count > 1 ? "m\'" . v:count : \'\') . \'gk\'', {expr = true})
@@ -269,6 +266,14 @@ mapper(
   "<c-w>w",
   "Window",
   "alternate_window",
+  "Alternate between window")
+
+mapper(
+  "n",
+  "<tab>",
+  "<c-w>w",
+  "Window",
+  "alternate_window_2",
   "Alternate between window")
 
 mapper(
