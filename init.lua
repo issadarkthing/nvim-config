@@ -3,7 +3,6 @@
 vim.g.mapleader = ","
 
 require('plugins')
-require('plugin/telescope')
 require('mappings')
 require('commands')
 require('options')
