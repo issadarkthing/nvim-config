@@ -9,6 +9,70 @@ function M.setup()
 
   lspconfig.gopls.setup{}
   lspconfig.tsserver.setup{}
+  lspconfig.diagnosticls.setup{
+    filetypes = { "typescript", "typescriptreact", "bash", "sh" },
+    init_options = {
+      filetypes = {
+        javascript = "eslint",
+        ["javascript.jsx"] = "eslint",
+        javascriptreact = "eslint",
+        typescript = "eslint",
+        typescriptreact = "eslint",
+        bash = "shellcheck",
+        sh = "shellcheck",
+      },
+      linters = {
+        eslint = {
+          sourceName = "eslint",
+          command = "eslint",
+          rootPatterns = { ".git" },
+          debounce = 100,
+          args = {
+            "--stdin",
+            "--stdin-filename",
+            "%filepath",
+            "--format",
+            "json",
+          },
+          parseJson = {
+            errorsRoot = "[0].messages",
+            line = "line",
+            column = "column",
+            endLine = "endLine",
+            endColumn = "endColumn",
+            message = "${message} [${ruleId}]",
+            security = "severity",
+          },
+          securities = {
+            [2] = "error",
+            [1] = "warning"
+          }
+        },
+
+        shellcheck = {
+          command = "shellcheck",
+          debounce = 100,
+          args = { "--format", "json", "-" },
+          sourceName = "shellcheck",
+          parseJson = {
+            line = "line",
+            column = "column",
+            endLine = "endLine",
+            endColumn = "endColumn",
+            message = "${message} [${code}]",
+            security = "level"
+          },
+          securities = {
+            [4] = "error",
+            [3] = "warning",
+            [2] = "info",
+            [1] = "hint"
+          }
+        }
+      }
+    }
+  }
+
 
   vim.cmd[[highlight LspDiagnosticsVirtualTextError guifg=#f03434]]
   vim.cmd[[highlight LspDiagnosticsVirtualTextWarning guifg=yellow]]
