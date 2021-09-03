@@ -1,3 +1,4 @@
+
 vim.b.vimwiki_list = {
   { 
     path = '~/.local/share/nvim/vimwiki', 
@@ -24,7 +25,8 @@ vim.cmd[[
 --makes formatted block prettier
 vim.b.vimwiki_conceal_pre = 1
 
-require'cmp'.setup{
+local cmp = require('cmp')
+cmp.buffer.setup{
   sources = {
     { name = 'look' },
     { name = 'buffer' },

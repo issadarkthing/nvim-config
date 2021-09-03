@@ -15,6 +15,7 @@ return require('packer').startup(function ()
 
 -- insert, or delete brackets, parens, quotes in pair
  use 'jiangmiao/auto-pairs'
+ -- use 'windwp/nvim-autopairs'
 
 -- comment
  use 'b3nj5m1n/kommentary'
@@ -162,15 +163,6 @@ return require('packer').startup(function ()
      requires = {'kyazdani42/nvim-web-devicons', opt = true}
  }
 
- -- fast as fuck auto completion
- use { 
-   'ms-jpq/coq_nvim',
-   branch = 'coq',
-   opt = true,
-   ft = {"go", "typescript", "typescriptreact", "javascript"},
-   config = function() require'plugin/coq_nvim'.setup() end
- }
-
  -- native LSP
  use { 
    'neovim/nvim-lspconfig',
@@ -178,22 +170,27 @@ return require('packer').startup(function ()
  }
 
  -- better ui for LSP
- --[[ use {
+ use {
    'glepnir/lspsaga.nvim',
    config = function() require'plugin/lspsaga'.setup() end
- } ]]
+ }
   
   -- toml syntax highlight
   use 'cespare/vim-toml'
 
-  --[[ use {
+  use {
     'hrsh7th/nvim-cmp',
     requires = {'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lua'},
-    config = function() require'plugin/nvim-cmp'.setup() end
+    config = function() require'plugin/nvim-cmp'.setup() end,
   }
 
-  use 'hrsh7th/cmp-nvim-lsp'
+  use { 
+    'hrsh7th/cmp-nvim-lsp',
+    config = function() require'plugin/cmp-nvim-lsp'.setup() end,
+  }
 
-  use 'octaltree/cmp-look' ]]
+  use 'octaltree/cmp-look'
+
+  use 'hrsh7th/vim-vsnip'
 
 end)
