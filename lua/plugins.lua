@@ -193,4 +193,5 @@ return require('packer').startup(function ()
 
   use 'hrsh7th/vim-vsnip'
 
+  use 'hrsh7th/cmp-path'
 end)
