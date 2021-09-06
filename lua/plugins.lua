@@ -194,4 +194,10 @@ return require('packer').startup(function ()
   use 'hrsh7th/vim-vsnip'
 
   use 'hrsh7th/cmp-path'
+
+  use { 
+    'mg979/vim-visual-multi',
+    config = function() require'plugin/vim-visual-multi' end,
+  }
+
 end)
