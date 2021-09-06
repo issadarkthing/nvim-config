@@ -1,5 +1,8 @@
-
 local cmd = vim.cmd
+
+function strip_whitespace()
+  vim.api.nvim_command[[%s/\s\+$//e]]
+end
 
 cmd [[
   function! Compile_rmd()
