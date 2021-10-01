@@ -14,7 +14,21 @@ return require('packer').startup(function ()
  use 'tpope/vim-surround'
 
 -- insert, or delete brackets, parens, quotes in pair
- use 'jiangmiao/auto-pairs'
+
+ use { 
+   "steelsojka/pears.nvim", 
+   config = function() 
+     require"pears".setup(function(conf)
+       conf.on_enter(function(pears_handle)
+         if vim.fn.pumvisible() == 1 and vim.fn.complete_info().selected ~= -1 then
+           vim.cmd[[:startinsert | call feedkeys("\<c-y>")]]
+         else
+           pears_handle()
+         end
+       end)
+     end) 
+   end
+ }
  -- use 'windwp/nvim-autopairs'
 
 -- comment
@@ -54,9 +68,6 @@ return require('packer').startup(function ()
 -- auto reload if file has been modified from external
 -- as if you insert :e! manually
  use 'djoshea/vim-autoread'
-
--- go plugin
- -- use { 'fatih/vim-go', opt = true, ft = 'go' }
 
 -- help to manage alignment
  use 'junegunn/vim-easy-align'
@@ -178,22 +189,15 @@ return require('packer').startup(function ()
   -- toml syntax highlight
   use 'cespare/vim-toml'
 
+  -- auto completion
+  
   use {
-    'hrsh7th/nvim-cmp',
-    requires = {'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lua'},
-    config = function() require'plugin/nvim-cmp'.setup() end,
+    'ms-jpq/coq_nvim',
+    branch = 'coq',
+    config = function() require'plugin/coq_nvim'.setup() end
   }
 
-  use { 
-    'hrsh7th/cmp-nvim-lsp',
-    config = function() require'plugin/cmp-nvim-lsp'.setup() end,
-  }
-
-  use 'octaltree/cmp-look'
-
-  use 'hrsh7th/vim-vsnip'
-
-  use 'hrsh7th/cmp-path'
+  -- auto completion ends here
 
   use { 
     'mg979/vim-visual-multi',
