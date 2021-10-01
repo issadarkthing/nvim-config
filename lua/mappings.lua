@@ -22,9 +22,14 @@ map('n', '<m-`>', '<c-^>')
 map('n', 'n', 'nzzzv')
 map('n', 'N', 'Nzzzv')
 map('n', 'q:', ':q<cr>')
+
 -- use tab for trigger completion with characters ahead and navigate.
 map('i', '<tab>', 'pumvisible() ? "<C-n>" : "<tab>"', {expr = true})
 map('i', '<s-tab>', 'pumvisible() ? "<C-p>" : "<s-tab>"', {expr = true})
+
+-- exit terminal insert mode
+map('t', '<esc>', [[&ft == "lazygit" ? "<esc>" : "<c-\><c-n>"]], {expr = true})
+map('t', '<tab>', [[<c-\><c-n><c-w><c-w>]])
 
 -- automatic center when jump to next or previous position
 map('n', '<c-o>', '<c-o>zz')
