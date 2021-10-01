@@ -7,6 +7,7 @@ function M.setup()
   local mapper = require('mappings')
   local lspconfig = require('lspconfig')
 
+  lspconfig.tsserver.setup{}
   lspconfig.gopls.setup{}
   lspconfig.diagnosticls.setup{
     filetypes = { "typescript", "typescriptreact", "bash", "sh" },
@@ -150,6 +151,7 @@ function M.setup()
   "LSP show documentation")
 
 
+  -- send error messages to quickfix list
   do
     local method = "textDocument/publishDiagnostics"
     local default_handler = vim.lsp.handlers[method]
