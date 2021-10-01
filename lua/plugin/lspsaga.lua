@@ -37,6 +37,14 @@ function M.setup()
   "lsp_saga_preview_definition",
   "Show definition") 
 
+  mapper.mapper(
+  "n",
+  "<leader>E",
+  "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<cr>",
+  "LSP Saga",
+  "lsp_saga_show_diagnostics",
+  "Show diagnostics")
+
 end
 
 return M
