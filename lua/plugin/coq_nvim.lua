@@ -10,7 +10,8 @@ function M.setup()
       snippets = {
         warn = {}
       }
-    }
+    },
+    keymap = { recommended = false }
   }
 
 end

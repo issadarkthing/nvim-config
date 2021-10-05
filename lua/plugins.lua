@@ -172,17 +172,18 @@ return require('packer').startup(function ()
     config = function() require'plugin/lspsaga'.setup() end
   }
 
-  -- auto completion
-  use {
-    'ms-jpq/coq_nvim',
-    branch = 'coq',
-    config = function() require'plugin/coq_nvim'.setup() end
-  }
 
   -- auto pair
   use {
     'windwp/nvim-autopairs',
     config = function() require'plugin/nvim-autopairs'.setup() end,
+  }
+
+  -- auto completion
+  use {
+    'ms-jpq/coq_nvim',
+    branch = 'coq',
+    config = function() require'plugin/coq_nvim'.setup() end
   }
 
   use 'leafgarland/typescript-vim'  
