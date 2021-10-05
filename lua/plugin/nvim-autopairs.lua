@@ -4,10 +4,36 @@ function M.setup()
 
   local remap = vim.api.nvim_set_keymap
   local npairs = require('nvim-autopairs')
-
+  local Rule   = require'nvim-autopairs.rule'
+  
   npairs.setup({ map_bs = false })
 
-  vim.g.coq_settings = { keymap = { recommended = false } }
+  npairs.add_rules {
+    Rule(' ', ' ')
+      :with_pair(function (opts)
+        local pair = opts.line:sub(opts.col - 1, opts.col)
+        return vim.tbl_contains({ '()', '[]', '{}' }, pair)
+      end),
+    Rule('( ', ' )')
+        :with_pair(function() return false end)
+        :with_move(function(opts)
+            return opts.prev_char:match('.%)') ~= nil
+        end)
+        :use_key(')'),
+    Rule('{ ', ' }')
+        :with_pair(function() return false end)
+        :with_move(function(opts)
+            return opts.prev_char:match('.%}') ~= nil
+        end)
+        :use_key('}'),
+    Rule('[ ', ' ]')
+        :with_pair(function() return false end)
+        :with_move(function(opts)
+            return opts.prev_char:match('.%]') ~= nil
+        end)
+        :use_key(']')
+  }
+
 
   -- these mappings are coq recommended mappings unrelated to nvim-autopairs
   remap('i', '<esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], { expr = true, noremap = true })
