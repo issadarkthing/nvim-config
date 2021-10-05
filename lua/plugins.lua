@@ -10,198 +10,181 @@ end
 
 return require('packer').startup(function ()
 
--- manages quoting/parenthesis
- use 'tpope/vim-surround'
+  -- adds surround text object
+  use { 'tpope/vim-surround' }
 
--- insert, or delete brackets, parens, quotes in pair
+  -- comment
+  use 'b3nj5m1n/kommentary'
 
- use { 
-   "steelsojka/pears.nvim", 
-   config = function() 
-     require"pears".setup(function(conf)
-       conf.on_enter(function(pears_handle)
-         if vim.fn.pumvisible() == 1 and vim.fn.complete_info().selected ~= -1 then
-           vim.cmd[[:startinsert | call feedkeys("\<c-y>")]]
-         else
-           pears_handle()
-         end
-       end)
-     end) 
-   end
- }
- -- use 'windwp/nvim-autopairs'
+  -- color highlight
+  use {'chrisbra/colorizer', opt = true, cmd = { 'ColorHighlight' }}
 
--- comment
- use 'b3nj5m1n/kommentary'
+  -- Vim sugar for the UNIX shell commands that need it the most
+  -- example: :Delete, :Move, :Rename, :Mkdir etc
+  use 'tpope/vim-eunuch'
 
--- color highlight
- use {'chrisbra/colorizer', opt = true, cmd = { 'ColorHighlight' }}
+  -- highlight unique character in every word
+  use 'unblevable/quick-scope'
 
--- Vim sugar for the UNIX shell commands that need it the most
--- example: :Delete, :Move, :Rename, :Mkdir etc
- use 'tpope/vim-eunuch'
+  -- personal wiki for vim
+  use {'vimwiki/vimwiki', opt = true, cmd = { 'VimwikiIndex' }}
 
--- highlight unique character in every word
- use 'unblevable/quick-scope'
+  -- handles gpg encrypted file
+  use 'jamessan/vim-gnupg'
 
--- personal wiki for vim
- use {'vimwiki/vimwiki', opt = true, cmd = { 'VimwikiIndex' }}
+  -- add more text object
+  use 'wellle/targets.vim'
 
--- handles gpg encrypted file
- use 'jamessan/vim-gnupg'
+  -- grammar check
+  use 'rhysd/vim-grammarous'
 
--- add more text object
- use 'wellle/targets.vim'
+  -- vim latex
+  use { 'lervag/vimtex', opt = true, ft = 'latex' }
 
--- grammar check
- use 'rhysd/vim-grammarous'
+  -- grammar check as well
+  use 'dpelle/vim-LanguageTool'
 
--- vim latex
- use { 'lervag/vimtex', opt = true, ft = 'latex' }
+  -- replace a existing text from the register
+  use 'inkarkat/vim-ReplaceWithRegister' 
 
--- grammar check as well
- use 'dpelle/vim-LanguageTool'
+  -- auto reload if file has been modified from external
+  -- as if you insert :e! manually
+  use 'djoshea/vim-autoread'
 
--- replace a existing text from the register
- use 'inkarkat/vim-ReplaceWithRegister' 
+  -- help to manage alignment
+  use 'junegunn/vim-easy-align'
 
--- auto reload if file has been modified from external
--- as if you insert :e! manually
- use 'djoshea/vim-autoread'
+  -- for clojure
+  -- Plug 'tpope/vim-fireplace'
+  use { 'vim-scripts/paredit.vim', opt = true, ft = 'clojure' }
+  use { 
+    'eraserhd/parinfer-rust', 
+    run = 'cargo build --release', 
+    ft = 'clojure', opt = true
+  }
 
--- help to manage alignment
- use 'junegunn/vim-easy-align'
+  -- personal colorscheme
+  use 'issadarkthing/vim-rex'
 
--- for clojure
--- Plug 'tpope/vim-fireplace'
- use { 'vim-scripts/paredit.vim', opt = true, ft = 'clojure' }
- use { 
-   'eraserhd/parinfer-rust', 
-   run = 'cargo build --release', 
-   ft = 'clojure', opt = true
- }
+  -- benchmarking startup time
+  use 'tweekmonster/startuptime.vim'
+  use 'antoinemadec/FixCursorHold.nvim'
 
--- personal colorscheme
- use 'issadarkthing/vim-rex'
+  -- show git marks
+  use 'airblade/vim-gitgutter'
 
--- benchmarking startup time
- use 'tweekmonster/startuptime.vim'
- use 'antoinemadec/FixCursorHold.nvim'
+  -- cool markdown preview
+  use { 
+    'iamcco/markdown-preview.nvim', 
+    ft = {"markdown"},
+    run = 'cd app && yarn install'  
+  }
 
--- show git marks
- use 'airblade/vim-gitgutter'
+  -- haskell syntax highlighting
+  use { 'neovimhaskell/haskell-vim', opt = true, ft = 'haskell' }
 
--- cool markdown preview
- use { 
-   'iamcco/markdown-preview.nvim', 
-   ft = {"markdown"},
-   run = 'cd app && yarn install'  
- }
+  -- additional cpp syntax highlighting
+  use 'octol/vim-cpp-enhanced-highlight'
 
--- haskell syntax highlighting
- use { 'neovimhaskell/haskell-vim', opt = true, ft = 'haskell' }
+  -- crystal language syntax highlighting
+  use { 'vim-crystal/vim-crystal', opt = true, ft = 'crystal' }
 
--- additional cpp syntax highlighting
- use 'octol/vim-cpp-enhanced-highlight'
+  -- add readline keybinding in command
+  use 'ryvnf/readline.vim'
 
--- crystal language syntax highlighting
- use { 'vim-crystal/vim-crystal', opt = true, ft = 'crystal' }
+  -- auto close pair for latex
+  use 'gi1242/vim-tex-autoclose'
 
--- add readline keybinding in command
- use 'ryvnf/readline.vim'
+  -- better typescript highlighting
+  -- use { 'leafgarland/typescript-vim', opt = true, ft = 'typescript' }
 
- use 'gi1242/vim-tex-autoclose'
+  -- comments in json file
+  use { 'neoclide/jsonc.vim', opt = true, ft = 'jsonc' }
 
--- better typescript highlighting
- use { 'leafgarland/typescript-vim', opt = true, ft = 'typescript' }
+  use 'skywind3000/asyncrun.vim'
 
--- comments in json file
- use { 'neoclide/jsonc.vim', opt = true, ft = 'jsonc' }
+  -- typescript/javascript formatter
+  use { 
+    'prettier/vim-prettier', 
+    opt = true, ft = {'typescript', 'typescriptreact'},
+    run = {'yarn install'}
+  }
 
- use 'skywind3000/asyncrun.vim'
+  -- run lazygit in neovim
+  use { 
+    'kdheepak/lazygit.nvim', 
+    opt = true, branch = 'nvim-v0.4.3',
+    cmd = {"LazyGit"}
+  }
 
- use { 
-   'prettier/vim-prettier', 
-   opt = true, ft = {'typescript', 'typescriptreact'},
-   run = {'yarn install'}
- }
+  -- automatically disable nohlsearch
+  use 'romainl/vim-cool'
 
--- run lazygit in neovim
- use { 
-   'kdheepak/lazygit.nvim', 
-   opt = true, branch = 'nvim-v0.4.3',
-   cmd = {"LazyGit"}
- }
+  -- helper commands to develop vim plugin
+  use 'tpope/vim-scriptease'
 
--- automatically disable nohlsearch
- use 'romainl/vim-cool'
+  -- might use this instead of calcurse because vim is life
+  use 'itchyny/calendar.vim'
 
--- helper commands to develop vim plugin
- use 'tpope/vim-scriptease'
+  -- react dev
+  use { 'peitalin/vim-jsx-typescript', opt = true, ft = 'typescriptreact' }
+  use { 'alvan/vim-closetag', opt = true, ft = 'typescriptreact' }
+  use { 'tpope/vim-ragtag', opt = true, ft = 'typescriptreact' }
 
--- might use this instead of calcurse because vim is life
- use 'itchyny/calendar.vim'
+  -- highlight character when moving linewise
+  use 'justinmk/vim-sneak'
 
- -- react dev
- use { 'peitalin/vim-jsx-typescript', opt = true, ft = 'typescriptreact' }
- use { 'alvan/vim-closetag', opt = true, ft = 'typescriptreact' }
- use { 'tpope/vim-ragtag', opt = true, ft = 'typescriptreact' }
+  -- keybinding finder
+  use {
+    'lazytanuki/nvim-mapper',
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+  }
 
- use 'justinmk/vim-sneak'
+  -- finder
+  use { 
+    'nvim-telescope/telescope.nvim', 
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+    config = function() require'plugin/telescope'.setup() end
+  }
 
- -- keybinding finder
- use {
-   'lazytanuki/nvim-mapper',
-   requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
- }
+  -- fuzzy searching written in c
+  use 'nvim-telescope/telescope-fzy-native.nvim'
 
- use { 
-   'nvim-telescope/telescope.nvim', 
-   requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-   config = function() require'plugin/telescope'.setup() end
- }
+  -- fast status line written in lua
+  use {
+    'glepnir/galaxyline.nvim',
+    branch = 'main',
+    -- your statusline
+    config = function() require'plugin/galaxyline' end,
+    -- some optional icons
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
 
- -- fuzzy searching written in c
- use 'nvim-telescope/telescope-fzy-native.nvim'
+  -- native LSP
+  use { 
+    'neovim/nvim-lspconfig',
+    config = function() require'plugin/nvim-lsp'.setup() end
+  }
 
- -- fast status line written in lua
- use {
-   'glepnir/galaxyline.nvim',
-     branch = 'main',
-     -- your statusline
-     config = function() require'plugin/galaxyline' end,
-     -- some optional icons
-     requires = {'kyazdani42/nvim-web-devicons', opt = true}
- }
-
- -- native LSP
- use { 
-   'neovim/nvim-lspconfig',
-   config = function() require'plugin/nvim-lsp'.setup() end
- }
-
- -- better ui for LSP
- use {
-   'glepnir/lspsaga.nvim',
-   config = function() require'plugin/lspsaga'.setup() end
- }
-  
-  -- toml syntax highlight
-  use 'cespare/vim-toml'
+  -- better ui for LSP
+  use {
+    'glepnir/lspsaga.nvim',
+    config = function() require'plugin/lspsaga'.setup() end
+  }
 
   -- auto completion
-  
   use {
     'ms-jpq/coq_nvim',
     branch = 'coq',
     config = function() require'plugin/coq_nvim'.setup() end
   }
 
-  -- auto completion ends here
-
-  use { 
-    'mg979/vim-visual-multi',
-    config = function() require'plugin/vim-visual-multi' end,
+  -- auto pair
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require'plugin/nvim-autopairs'.setup() end,
   }
+
+  use 'leafgarland/typescript-vim'  
 
 end)
