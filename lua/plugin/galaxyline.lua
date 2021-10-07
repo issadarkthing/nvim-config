@@ -88,25 +88,20 @@ gls.left[5] = {
 }
 
 gls.left[6] = {
-  LineInfo = {
-    provider = 'LineColumn',
+  LineColumn = {
+    provider = function()
+      local max_lines = vim.fn.line('$')
+      local line = vim.fn.line('.')
+      local column = vim.fn.col('.')
+      return string.format(" %3d/%d:%d ", line, max_lines, column)
+    end,
     separator = ' ',
-    condition = condition.hide_in_width,
     separator_highlight = {'NONE',colors.bg},
     highlight = {colors.fg,colors.bg},
   },
 }
 
 gls.left[7] = {
-  PerCent = {
-    provider = 'LinePercent',
-    separator = ' ',
-    separator_highlight = {'NONE',colors.bg},
-    highlight = {colors.fg,colors.bg,'bold'},
-  }
-}
-
-gls.left[8] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
@@ -115,7 +110,7 @@ gls.left[8] = {
     highlight = {colors.red,colors.bg}
   }
 }
-gls.left[9] = {
+gls.left[8] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',
@@ -125,7 +120,7 @@ gls.left[9] = {
   }
 }
 
-gls.left[10] = {
+gls.left[9] = {
   DiagnosticHint = {
     provider = 'DiagnosticHint',
     icon = '  ',
@@ -133,7 +128,7 @@ gls.left[10] = {
   }
 }
 
-gls.left[11] = {
+gls.left[10] = {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = '  ',
@@ -143,7 +138,7 @@ gls.left[11] = {
   }
 }
 
-gls.left[12] = {
+gls.left[11] = {
   Whitespace = {
     provider = function() return "" end,
     separator = '',
@@ -252,26 +247,24 @@ gls.short_line_left[1] = {
 }
 
 gls.short_line_left[2] = {
-  FileSize = {
-    provider = 'FileSize',
-    condition = condition.buffer_not_empty,
-    highlight = {colors.fg,colors.bg}
-  }
-}
-
-gls.short_line_left[3] = {
-  FileIcon = {
-    provider = 'FileIcon',
-    condition = condition.buffer_not_empty,
-    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
-  },
-}
-
-gls.short_line_left[4] = {
   SFileName = {
     provider =  'SFileName',
     condition = condition.buffer_not_empty,
     highlight = {colors.blue, colors.bg}
+  }
+}
+
+gls.short_line_left[3] = {
+  LineColumn = {
+    provider = function()
+      local max_lines = vim.fn.line('$')
+      local line = vim.fn.line('.')
+      local column = vim.fn.col('.')
+      return string.format(" %3d/%d:%d ", line, max_lines, column)
+    end,
+    separator = ' ',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.fg,colors.bg},
   }
 }
 
