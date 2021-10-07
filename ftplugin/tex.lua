@@ -9,8 +9,5 @@ vim.b.tex_flavor = 'latex'
 vim.b.vimtex_quickfix_open_on_warning = 0
 
 
-vim.bo.thesaurus:append{ ~/.config/nvim/thesaurus/mthesaur.txt }
-vim.bo.dictionary:append{ ~/.config/nvim/thesaurus/mthesaur.txt }
-vim.bo.complete:append{ 's' }
-vim.bo.localleader = [[\]]
+vim.b.localleader = [[\]]
 
