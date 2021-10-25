@@ -9,9 +9,15 @@ function M.setup()
     clients = {
       snippets = {
         warn = {}
+      },
+      lsp = {
+        weight_adjust = 1.2,
+      },
+      buffers = {
+        enabled = false,
       }
     },
-    keymap = { recommended = false }
+    keymap = { recommended = false },
   }
 
 end
