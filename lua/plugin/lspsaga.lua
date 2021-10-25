@@ -21,13 +21,13 @@ function M.setup()
   "lsp_saga_code_action",
   "Code action") 
 
-  mapper.mapper(
+  --[[ mapper.mapper(
   "n",
   "K",
   "<cmd>Lspsaga hover_doc<cr>",
   "LSP Saga",
   "lsp_saga_code_hover",
-  "Show documentation") 
+  "Show documentation")  ]]
 
   mapper.mapper(
   "n",

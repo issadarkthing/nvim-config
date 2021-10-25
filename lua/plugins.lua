@@ -167,10 +167,10 @@ return require('packer').startup(function ()
   }
 
   -- better ui for LSP
-  use {
+  --[[ use {
     'glepnir/lspsaga.nvim',
     config = function() require'plugin/lspsaga'.setup() end
-  }
+  } ]]
 
 
   -- auto pair
