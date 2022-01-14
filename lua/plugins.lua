@@ -35,9 +35,6 @@ return require('packer').startup(function ()
   -- add more text object
   use 'wellle/targets.vim'
 
-  -- grammar check
-  use 'rhysd/vim-grammarous'
-
   -- vim latex
   use { 'lervag/vimtex', opt = true, ft = 'latex' }
 
@@ -68,10 +65,7 @@ return require('packer').startup(function ()
 
   -- benchmarking startup time
   use 'tweekmonster/startuptime.vim'
-  use 'antoinemadec/FixCursorHold.nvim'
-
-  -- show git marks
-  use 'airblade/vim-gitgutter'
+  -- use 'antoinemadec/FixCursorHold.nvim'
 
   -- cool markdown preview
   use { 
@@ -101,8 +95,6 @@ return require('packer').startup(function ()
   -- comments in json file
   use { 'neoclide/jsonc.vim', opt = true, ft = 'jsonc' }
 
-  use 'skywind3000/asyncrun.vim'
-
   -- typescript/javascript formatter
   use { 
     'prettier/vim-prettier', 
@@ -131,9 +123,6 @@ return require('packer').startup(function ()
   use { 'alvan/vim-closetag', opt = true, ft = 'typescriptreact' }
   use { 'tpope/vim-ragtag', opt = true, ft = 'typescriptreact' }
 
-  -- highlight character when moving linewise
-  use 'justinmk/vim-sneak'
-
   -- keybinding finder
   use {
     'lazytanuki/nvim-mapper',
@@ -152,8 +141,7 @@ return require('packer').startup(function ()
 
   -- fast status line written in lua
   use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
+    'NTBBloodbath/galaxyline.nvim',
     -- your statusline
     config = function() require'plugin/galaxyline' end,
     -- some optional icons
@@ -187,5 +175,7 @@ return require('packer').startup(function ()
   }
 
   use 'leafgarland/typescript-vim'  
+
+  use 'tomlion/vim-solidity'
 
 end)

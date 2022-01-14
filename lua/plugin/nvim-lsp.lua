@@ -6,10 +6,12 @@ function M.setup()
 
   local mapper = require('mappings')
   local lspconfig = require('lspconfig')
+  local configs = require('lspconfig.configs')
+  local util = require('lspconfig.util')
 
   lspconfig.tsserver.setup{}
   lspconfig.gopls.setup{}
-  lspconfig.diagnosticls.setup{
+  --[[ lspconfig.diagnosticls.setup{
     filetypes = { "typescript", "typescriptreact", "bash", "sh" },
     init_options = {
       filetypes = {
@@ -71,7 +73,7 @@ function M.setup()
         }
       }
     }
-  }
+  } ]]
 
 
   vim.cmd[[highlight LspDiagnosticsVirtualTextError guifg=#f03434]]
@@ -152,7 +154,7 @@ function M.setup()
 
 
   -- send error messages to quickfix list
-  do
+  --[[ do
     local method = "textDocument/publishDiagnostics"
     local default_handler = vim.lsp.handlers[method]
     vim.lsp.handlers[method] = function(err, method, result, client_id, bufnr, config)
@@ -170,7 +172,7 @@ function M.setup()
       end
       vim.lsp.util.set_qflist(qflist)
     end
-  end
+  end ]]
 
 end
 

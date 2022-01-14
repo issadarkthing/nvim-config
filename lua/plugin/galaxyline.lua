@@ -1,6 +1,6 @@
 local gl = require('galaxyline')
-local colors = require('galaxyline.theme').default
-local condition = require('galaxyline.condition')
+local colors = require('galaxyline.themes.colors')
+local condition = require('galaxyline/condition')
 local gls = gl.section
 
 colors.dark_blue = "#092235"
@@ -44,7 +44,7 @@ gls.left[1] = {
   },
 }
 
-gls.left[2] = {
+--[[ gls.left[2] = {
   ViMode = {
     provider = function()
       -- auto change color according the vim mode
@@ -61,9 +61,9 @@ gls.left[2] = {
     end,
     highlight = {colors.red,colors.bg,'bold'},
   },
-}
+} ]]
 
-gls.left[3] = {
+gls.left[2] = {
   FileSize = {
     provider = 'FileSize',
     condition = condition.buffer_not_empty,
@@ -71,15 +71,15 @@ gls.left[3] = {
   }
 }
 
-gls.left[4] ={
+gls.left[3] ={
   FileIcon = {
     provider = 'FileIcon',
     condition = condition.buffer_not_empty,
-    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.bg},
+    highlight = {require('galaxyline.providers.fileinfo').get_file_icon_color,colors.bg},
   },
 }
 
-gls.left[5] = {
+gls.left[4] = {
   FileName = {
     provider = 'FileName',
     condition = condition.buffer_not_empty,
@@ -87,7 +87,7 @@ gls.left[5] = {
   }
 }
 
-gls.left[6] = {
+gls.left[5] = {
   LineColumn = {
     provider = function()
       local max_lines = vim.fn.line('$')
@@ -101,7 +101,7 @@ gls.left[6] = {
   },
 }
 
-gls.left[7] = {
+gls.left[6] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
@@ -110,7 +110,7 @@ gls.left[7] = {
     highlight = {colors.red,colors.bg}
   }
 }
-gls.left[8] = {
+gls.left[7] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',
@@ -120,7 +120,7 @@ gls.left[8] = {
   }
 }
 
-gls.left[9] = {
+gls.left[8] = {
   DiagnosticHint = {
     provider = 'DiagnosticHint',
     icon = '  ',
@@ -128,7 +128,7 @@ gls.left[9] = {
   }
 }
 
-gls.left[10] = {
+gls.left[9] = {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = '  ',
@@ -138,7 +138,7 @@ gls.left[10] = {
   }
 }
 
-gls.left[11] = {
+gls.left[10] = {
   Whitespace = {
     provider = function() return "" end,
     separator = '',
